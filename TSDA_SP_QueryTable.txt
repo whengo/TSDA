@@ -1,0 +1,3 @@
+create proc  takewiki_queryTable (@FTableName varchar(30))
+as
+select FFieldList form takewiki_tableCenter where FTableName =@FtableName

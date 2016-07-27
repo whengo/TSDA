@@ -3,7 +3,7 @@
 go
 create  proc takewiki_QueryTable
 (
-@TableName nvarchar (30) ='t_icitem',
+@TableName nvarchar (80) ='t_icitem',
 @FieldList nvarchar (400)='*',
 @DBName nvarchar(50)='',
 @DBType nvarchar(30)='K3ERP', 

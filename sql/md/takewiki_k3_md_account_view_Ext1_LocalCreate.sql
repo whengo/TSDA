@@ -3,7 +3,7 @@
 go
 create view takewiki_k3_md_account_view_Ext1
 as
-select faccountid,FFullName,FGroupID from t_account
+select faccountid as FItemID,FFullName,FGroupID from t_account
 go
 -- usage
 -- select * from  takewiki_k3_md_account_view_Ext1

@@ -1,9 +1,9 @@
 ﻿
 
-if object_id('takewiki_k3_md_account_getParentIDByLevel') is not null
-drop function  takewiki_k3_md_account_getParentIDByLevel
+if object_id('takewiki_k3_md_account_func_getParentIDByLevel') is not null
+drop function  takewiki_k3_md_account_func_getParentIDByLevel
 go
-create function takewiki_k3_md_account_getParentIDByLevel
+create function takewiki_k3_md_account_func_getParentIDByLevel
 (@FItemID int,@FLevel int) returns int
 as
 begin --0
@@ -38,8 +38,8 @@ where fitemid=@FItemID
 end --0
 go
 --usage 
--- select dbo.takewiki_k3_md_account_getParentIDByLevel(1107,2)
--- select dbo.takewiki_k3_md_account_getParentIDByLevel(1107,1)
--- select dbo.takewiki_k3_md_account_getParentIDByLevel(1107,3)
--- select dbo.takewiki_k3_md_account_getParentIDByLevel(1107,4)
+-- select dbo.takewiki_k3_md_account_func_getParentIDByLevel(1107,2)
+-- select dbo.takewiki_k3_md_account_func_getParentIDByLevel(1107,1)
+-- select dbo.takewiki_k3_md_account_func_getParentIDByLevel(1107,3)
+-- select dbo.takewiki_k3_md_account_func_getParentIDByLevel(1107,4)
 

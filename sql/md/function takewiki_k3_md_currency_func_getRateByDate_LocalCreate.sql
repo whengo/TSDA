@@ -23,4 +23,3 @@ go
 -- select @Fitemid = dbo.takewiki_k3_md_currency_func_getItemidbynumber('tk');
                        
 -- select dbo.takewiki_k3_md_currency_func_getRateByDate (@Fitemid,'2016-06-05','公司汇率') 
-   

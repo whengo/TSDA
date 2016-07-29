@@ -1,13 +1,11 @@
 ﻿if object_id('takewiki_k3_md_account_view_rebuild') is not null
 drop proc takewiki_k3_md_account_view_rebuild
 go
-create proc takewiki_k3_md_account_view_rebuild (@FromDB nvarchar(50)='')
+create proc takewiki_k3_md_account_view_rebuild 
 as
 begin
 declare @sql_pre nvarchar(max)
 declare @sql_run nvarchar(max)
-if @FromDB = ''
-   select @FromDB = db_name()
 select @sql_pre =N'if object_id('+char(39)+N'takewiki_k3_md_account_view'+char(39)+N') is not null
 drop view  '+N'takewiki_k3_md_account_view'
 --char(39)是用于取代'的func

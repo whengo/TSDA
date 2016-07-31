@@ -16,7 +16,7 @@ begin --0
 declare @FNumber nvarchar(80)'+
 N' select @FNumber =  '+ @Number_Field_Name +N'  from  ' +@Table_View_Name
 +N' where  '+@ItemID_Field_Name +N'  = @FItemID
-   return @Fumber
+   return @FNumber
 end '
 exec sp_executesql @sql_pre
 exec sp_executesql @sql_run

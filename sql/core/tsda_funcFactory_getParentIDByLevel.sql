@@ -57,7 +57,7 @@ go
 
 
 ---create table  test_parent
-(--- FItemID int,FParentID int ,Flevel int )
+-- (--- FItemID int,FParentID int ,Flevel int )
 
 -- insert into test_parent values(1,null,1)
 -- insert into test_parent values(2,null,1)

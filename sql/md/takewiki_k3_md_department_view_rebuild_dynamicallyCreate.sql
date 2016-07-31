@@ -8,10 +8,10 @@ declare @sql_pre nvarchar(max)
 declare @sql_run nvarchar(max)
 if @FromDB = ''
    select @FromDB = db_name()
-select @sql_pre =N'if object_id('+char(39)+N'takewiki_k3_md_deparment_view'+char(39)+N') is not null
-drop view  '+N'takewiki_k3_md_deparment_view'
+select @sql_pre =N'if object_id('+char(39)+N'takewiki_k3_md_department_view'+char(39)+N') is not null
+drop view  '+N'takewiki_k3_md_department_view'
 --char(39)是用于取代'的func
-select @sql_run = N'create view  '+N'takewiki_k3_md_deparment_view '+N'
+select @sql_run = N'create view  '+N'takewiki_k3_md_department_view '+N'
  as'+space(3)+N'
 select a.FItemID,a.FNumber,a.FName,a.FParentID,a.FLevel,a.FDetail,a.FDeleted,c.FName as FDeptProperty,d.FName as FCostCalcType from '
  +@FromDB+N'.dbo.t_item   a   inner join  '

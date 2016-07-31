@@ -13,7 +13,7 @@ drop view  '+N'takewiki_k3_md_COA_view'
 --char(39)是用于取代'的func
 select @sql_run = N'create view  '+N'takewiki_k3_md_COA_view '+N'
  as
-select faccountid,fnumber,fname,flevel,fdetail,fparentid,fdelete from  '+@FromDB+N'.dbo.t_account
+select faccountid as FItemID,fnumber,fname,flevel,fdetail,fparentid,fdelete from  '+@FromDB+N'.dbo.t_account
 go'
 --select @sql_pre
 ---select @sql_run

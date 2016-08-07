@@ -178,3 +178,112 @@ go
 
 
 
+if object_id('takewiki_k3_md_currency_func_getAmountDecimalByItemID') is not null
+drop function takewiki_k3_md_currency_func_getAmountDecimalByItemID
+go
+create function takewiki_k3_md_currency_func_getAmountDecimalByItemID
+(@FItemID int) returns int
+as
+begin
+  declare @FScale int
+  select @FScale = dbo.takewiki_k3_md_currency_func_getScaleByItemID(@FItemID)
+  return @FScale
+end
+go
+--usage
+--select dbo.takewiki_k3_md_currency_func_getAmountDecimalByItemID(1)
+--select dbo.takewiki_k3_md_currency_func_getAmountDecimalByItemID(1001)
+--this func is the same as 
+-- select dbo.takewiki_k3_md_currency_func_getScaleByItemID(1001)
+if object_id('takewiki_k3_md_currency_func_getItemIDByName') is not null
+drop function  takewiki_k3_md_currency_func_getItemIDByName
+go
+create function takewiki_k3_md_currency_func_getItemIDByName
+(@FName nvarchar(80)) returns int
+as
+begin
+  declare @FItemID int
+
+select @FItemID =FItemID from takewiki_k3_md_currency_view
+   where FName =@FName
+   return @FItemID
+end
+go
+--usage
+--select dbo.takewiki_k3_md_currency_func_getItemIDByName('人民币')
+--select dbo.takewiki_k3_md_currency_func_getItemIDByName('日元')
+if object_id('takewiki_k3_md_currency_func_getItemIDByNumber') is not null
+drop function  takewiki_k3_md_currency_func_getItemIDByNumber
+go
+create function takewiki_k3_md_currency_func_getItemIDByNumber
+(@FNumber nvarchar(30)) returns int
+as
+begin
+  declare @FItemID int
+
+select @FItemID =FItemID from takewiki_k3_md_currency_view
+   where FNumber =@FNumber
+   return @FItemID
+end
+go
+--usage
+
+-- select dbo.takewiki_k3_md_currency_func_getitemidbynumber('RMB')
+-- select dbo.takewiki_k3_md_currency_func_getitemidbynumber('JPY')
+
+
+---takewiki_querytable 
+if object_id('takewiki_k3_md_currency_func_getNameByItemID') is not null
+drop function  takewiki_k3_md_currency_func_getNameByItemID
+go
+create function takewiki_k3_md_currency_func_getNameByItemID
+(@FItemID int) returns nvarchar(80)
+as
+begin
+  declare @FName nvarchar(80)
+
+select @FName =FName from takewiki_k3_md_currency_view
+   where FItemID =@FItemID
+   return @FName
+end
+go
+--usage
+
+-- select dbo.takewiki_k3_md_currency_func_getNameByItemID(1)
+-- select dbo.takewiki_k3_md_currency_func_getNameByItemID(1001)
+
+-- takewiki_querytable 'takewiki_k3_md_currency_view'
+if object_id('takewiki_k3_md_currency_func_getNumberByItemID') is not null
+drop function takewiki_k3_md_currency_func_getNumberByItemID
+go
+create function takewiki_k3_md_currency_func_getNumberByItemID
+(@FItemID int) returns nvarchar(30)
+as
+begin
+  declare @FNumber nvarchar(30)
+
+select @FNumber =FNumber from takewiki_k3_md_currency_view
+   where FItemID =@FItemID
+   return @FNumber
+end
+go
+--usage
+--  select dbo.takewiki_k3_md_currency_func_getNumberByItemID(1)
+--  select dbo.takewiki_k3_md_currency_func_getNumberByItemID(1001)
+if object_id('takewiki_k3_md_currency_func_getScaleByItemID') is not null
+drop function  takewiki_k3_md_currency_func_getScaleByItemID
+go
+create function takewiki_k3_md_currency_func_getScaleByItemID
+(@FItemID int) returns int
+as
+begin
+  declare @FScale int
+
+select @FScale =FScale from takewiki_k3_md_currency_view
+   where FItemID =@FItemID
+   return @FScale
+end
+go
+--usage
+--select dbo.takewiki_k3_md_currency_func_getScaleByItemID(1)
+--select dbo.takewiki_k3_md_currency_func_getScaleByItemID(1001)

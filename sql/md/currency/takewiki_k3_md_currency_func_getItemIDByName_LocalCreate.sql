@@ -13,5 +13,5 @@ select @FItemID =FItemID from takewiki_k3_md_currency_view
 end
 go
 --usage
-select dbo.takewiki_k3_md_currency_func_getItemIDByName('人民币')
-select dbo.takewiki_k3_md_currency_func_getItemIDByName('日元')
+--select dbo.takewiki_k3_md_currency_func_getItemIDByName('人民币')
+--select dbo.takewiki_k3_md_currency_func_getItemIDByName('日元')

@@ -14,8 +14,8 @@ end
 go
 --usage
 
-select dbo.takewiki_k3_md_currency_func_getitemidbynumber('RMB')
-select dbo.takewiki_k3_md_currency_func_getitemidbynumber('JPY')
+-- select dbo.takewiki_k3_md_currency_func_getitemidbynumber('RMB')
+-- select dbo.takewiki_k3_md_currency_func_getitemidbynumber('JPY')
 
 
 ---takewiki_querytable 

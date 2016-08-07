@@ -1,7 +1,7 @@
-﻿if object_id('takewiki_k3_scm_stockTranfer_proc_queryBarcodeDetailByBillNo') is not null
-drop proc takewiki_k3_scm_stockTranfer_proc_queryBarcodeDetailByBillNo
+﻿if object_id('takewiki_k3_scm_stockTransfer_proc_queryBarcodeDetailByBillNo') is not null
+drop proc takewiki_k3_scm_stockTransfer_proc_queryBarcodeDetailByBillNo
 go
-create proc takewiki_k3_scm_stockTranfer_proc_queryBarcodeDetailByBillNo @billno varchar(30)    
+create proc takewiki_k3_scm_stockTransfer_proc_queryBarcodeDetailByBillNo( @billno varchar(30)   ) 
 as     
 begin    
 select  a.FBillNo,a.FEntryID,ic.FNumber,ic.FName,ic.fmodel ,b.FBarcode,a.FQty,    

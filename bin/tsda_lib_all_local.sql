@@ -1,45 +1,28 @@
-﻿if object_id('takewiki_k3_md_COA_view_rebuild') is not null
-drop proc takewiki_k3_md_COA_view_rebuild
+﻿--rsda definition
+--one of the core proc in tsda 
+if object_id('tsda') is not null
+   drop proc tsda
 go
-create proc takewiki_k3_md_COA_view_rebuild (@FromDB nvarchar(50)='')
+create  proc tsda
+(
+@TableName nvarchar (80) ='t_icitem',
+@FieldList nvarchar (400)='*',
+@DBName nvarchar(50)='',
+@DBType nvarchar(30)='K3ERP', 
+@Schema nvarchar (30)='dbo')
 as
+
+set nocount on 
 begin
-declare @sql_pre nvarchar(max)
-declare @sql_run nvarchar(max)
-if @FromDB = ''
-   select @FromDB = db_name()
-select @sql_pre =N'if object_id('+char(39)+N'takewiki_k3_md_COA_view'+char(39)+N') is not null
-drop view  '+N'takewiki_k3_md_COA_view'
---char(39)是用于取代'的func
-select @sql_run = N'create view  '+N'takewiki_k3_md_COA_view '+N'
- as
-select faccountid,fnumber,fname,flevel,fdetail,fparentid,fdelete from  '+@FromDB+N'.dbo.t_account
-go'
---select @sql_pre
----select @sql_run
-exec sp_executesql @sql_pre
-exec sp_executesql @sql_run
+declare @sql nvarchar(max)=N''
+if @DBName =''
+  begin
+  select @DBName = db_name()
+  end
+if @DBType = 'K3ERP'
+begin
+select @sql=N'select '+@FieldList+N'  from  '+@DBName+N'.'+@Schema+N'.'+@TableName 
 end
-go
-if object_id('takewiki_k3_md_account_view_rebuild') is not null
-drop proc takewiki_k3_md_account_view_rebuild
-go
-create proc takewiki_k3_md_account_view_rebuild (@FromDB nvarchar(50)='')
-as
-begin
-declare @sql_pre nvarchar(max)
-declare @sql_run nvarchar(max)
-if @FromDB = ''
-   select @FromDB = db_name()
-select @sql_pre =N'if object_id('+char(39)+N'takewiki_k3_md_account_view'+char(39)+N') is not null
-drop view  '+N'takewiki_k3_md_account_view'
---char(39)是用于取代'的func
-select @sql_run = N'create view  '+N'takewiki_k3_md_account_view '+N'
- as
-select *   from  takewiki_k3_md_coa_view'+space(3)+N'go'
---select @sql_pre
----select @sql_run
-exec sp_executesql @sql_pre
-exec sp_executesql @sql_run
+exec sp_executesql @sql
 end
 go

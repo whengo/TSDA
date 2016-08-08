@@ -363,3 +363,53 @@ end
 go
 --usage
 --exec takewiki_k3_md_itemclass_sp_Show
+exec tsda_funcFactory_getCurrentLevel 
+'takewiki_k3_md_customer_func_getCurrentLevel',
+'takewiki_k3_md_customer_view','FItemID','FLevel'
+---tsda takewiki_k3_md_customer_view
+
+--select dbo.takewiki_k3_md_customer_func_getCurrentLevel(388)
+--select dbo.takewiki_k3_md_customer_func_getCurrentLevel(384)
+go
+exec tsda_funcFactory_getItemIDByLevel 'takewiki_k3_md_customer_func_getItemIDByLevel',
+'takewiki_k3_md_customer_func_getCurrentLevel',
+'takewiki_k3_md_customer_func_getParentIDByLevel'
+
+---  tsda 'takewiki_k3_md_customer_view'
+ 
+ --  select dbo.takewiki_k3_md_customer_func_getItemIDByLevel(389,3)
+  --  select dbo.takewiki_k3_md_customer_func_getItemIDByLevel(389,2)
+   --  select dbo.takewiki_k3_md_customer_func_getItemIDByLevel(389,1)
+go
+ --tsda 'takewiki_k3_md_customer_view'
+ --go
+ tsda_funcFactory_getItemIDByNumber 'takewiki_k3_md_customer_func_getItemIDByNumber',
+ 'takewiki_k3_md_customer_view',
+'FItemID',
+ 'FNumber'
+ --go
+ --select dbo.takewiki_k3_md_customer_func_getItemIDByNumber('004')
+ --select dbo.takewiki_k3_md_customer_func_getItemIDByNumber('005')
+ go
+
+ -- tsda 'takewiki_k3_md_department_view'
+tsda_funcFactory_getNameByItemID 'takewiki_k3_md_customer_func_getNameByItemID',
+'takewiki_k3_md_customer_view',
+'FItemID',
+'FName'
+
+--tsda takewiki_k3_md_customer_view
+--select dbo.takewiki_k3_md_customer_func_getNameByItemID(378)
+--select dbo.takewiki_k3_md_customer_func_getNameByItemID(379)
+go
+exec  tsda_funcFactory_getParentIDByLevel 'takewiki_k3_md_customer_func_getParentIDByLevel',
+'takewiki_k3_md_customer_view',
+'FItemID',
+'FParentID',
+'FLevel'
+
+--tsda 'takewiki_k3_md_customer_view'
+--select dbo.takewiki_k3_md_customer_func_getParentIDByLevel(388,3)
+--select dbo.takewiki_k3_md_customer_func_getParentIDByLevel(388,2)
+--select dbo.takewiki_k3_md_customer_func_getParentIDByLevel(388,1)
+go

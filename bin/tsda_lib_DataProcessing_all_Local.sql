@@ -287,3 +287,79 @@ go
 --usage
 --select dbo.takewiki_k3_md_currency_func_getScaleByItemID(1)
 --select dbo.takewiki_k3_md_currency_func_getScaleByItemID(1001)
+
+if  object_id(N'takewiki_k3_md_itemclass_func_getItemClassIDByName') is not null
+begin
+drop function takewiki_k3_md_itemclass_func_getItemClassIDByName
+end
+go
+create function takewiki_k3_md_itemclass_func_getItemClassIDByName (@FName nvarchar(30))
+returns int
+as
+begin
+declare @FItemClassID int
+select  @FitemClassID= FItemClassid from takewiki_k3_md_itemclass_view
+where FName =@FName
+return @FItemClassID
+end
+go
+---select dbo.takewiki_k3_md_itemclass_func_getItemClassIDByName('供应商')
+if  object_id(N'takewiki_k3_md_itemclass_func_getSQLTableNameByName') is not null
+begin
+drop function takewiki_k3_md_itemclass_func_getSQLTableNameByName
+end
+go
+create function takewiki_k3_md_itemclass_func_getSQLTableNameByName (@FName nvarchar(30))
+returns nvarchar(50)
+as
+begin
+declare @SQLTableName nvarchar(50)
+select  @SQLTableName= FSQLTableName from takewiki_k3_md_itemclass_view
+where FName =@FName
+return @SQLTableName
+end
+go
+---select dbo.takewiki_k3_md_itemclass_func_getSQLTableNameByName('供应商')
+if OBJECT_ID('takewiki_k3_md_itemclass_sp_getCountByName') is not null
+drop proc takewiki_k3_md_itemclass_sp_getCountByName
+go
+create proc takewiki_k3_md_itemclass_sp_getCountByName(@FName nvarchar(30),@Count int out)
+as
+begin
+declare @sql nvarchar(400)
+select  @sql =N'select  @count = count(1) from takewiki_k3_md_itemclass_view where FName =@FName';
+exec sp_executesql @sql,N'@count int out,@FName nvarchar(30)',@Count out,@FName
+end
+go
+--Usage 
+
+ --declare @count int 
+ --exec takewiki_k3_md_itemclass_sp_getCountByName N'客户',@count out
+ --select @count
+if OBJECT_ID('takewiki_k3_md_itemclass_func_getCountByName') is not null
+drop function  takewiki_k3_md_itemclass_func_getCountByName
+go
+create function  takewiki_k3_md_itemclass_func_getCountByName (@FName nvarchar(30))
+returns int
+as
+begin
+declare @count int
+select  @count = count(1) from takewiki_k3_md_itemclass_view where FName =@FName
+return @count
+end
+go
+--Usage 
+--select dbo.takewiki_k3_md_itemclass_func_getCountByName('供应商')
+if OBJECT_ID(N'takewiki_k3_md_itemclass_sp_Show') is not null
+begin 
+drop proc takewiki_k3_md_itemclass_sp_Show
+end
+go
+create proc takewiki_k3_md_itemclass_sp_Show
+as
+begin
+select * from  takewiki_k3_md_itemclass_view
+end
+go
+--usage
+--exec takewiki_k3_md_itemclass_sp_Show

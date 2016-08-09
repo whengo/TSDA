@@ -489,4 +489,81 @@ go
 'takewiki_k3_md_department_view','FItemID','FParentID','FLevel'
 -- select dbo.takewiki_k3_md_department_func_getParentIDByLevel(259,1)
 go
+exec tsda_funcFactory_getCurrentLevel 
+'takewiki_k3_md_supplier_func_getCurrentLevel',
+'takewiki_k3_md_supplier_view','FItemID','FLevel'
+---tsda takewiki_k3_md_supplier_view
 
+--select dbo.takewiki_k3_md_supplier_func_getCurrentLevel(869)
+--select dbo.takewiki_k3_md_supplier_func_getCurrentLevel(11707)
+--select dbo.takewiki_k3_md_supplier_func_getCurrentLevel(868)
+
+go
+exec tsda_funcFactory_getItemIDByLevel 'takewiki_k3_md_supplier_func_getItemIDByLevel',
+'takewiki_k3_md_supplier_func_getCurrentLevel',
+'takewiki_k3_md_supplier_func_getParentIDByLevel'
+
+---  tsda 'takewiki_k3_md_supplier_view'
+ 
+   --select dbo.takewiki_k3_md_supplier_func_getItemIDByLevel(870,1)
+   -- select dbo.takewiki_k3_md_supplier_func_getItemIDByLevel(870,2)
+   --  select dbo.takewiki_k3_md_supplier_func_getItemIDByLevel(870,3)
+
+
+go
+--tsda 'takewiki_k3_md_supplier_view'
+
+exec tsda_funcFactory_getItemIDByName 'takewiki_k3_md_supplier_func_getItemIDByName',
+ 'takewiki_k3_md_supplier_view',
+'FItemid',
+'FName'
+--usage
+--select dbo.takewiki_k3_md_supplier_func_getItemIDByName('南通精亮贸易有限公司')
+--select dbo.takewiki_k3_md_supplier_func_getItemIDByName('徐张建')
+
+
+go
+ --tsda 'takewiki_k3_md_supplier_view'
+ --go
+ tsda_funcFactory_getItemIDByNumber 'takewiki_k3_md_supplier_func_getItemIDByNumber',
+ 'takewiki_k3_md_supplier_view',
+'FItemID',
+ 'FNumber'
+ --go
+ --select dbo.takewiki_k3_md_supplier_func_getItemIDByNumber('01.001')
+ --select dbo.takewiki_k3_md_supplier_func_getItemIDByNumber('01.045')
+
+ go
+ -- tsda 'takewiki_k3_md_department_view'
+tsda_funcFactory_getNameByItemID 'takewiki_k3_md_supplier_func_getNameByItemID',
+'takewiki_k3_md_supplier_view',
+'FItemID',
+'FName'
+
+--tsda takewiki_k3_md_supplier_view
+--select dbo.takewiki_k3_md_supplier_func_getNameByItemID(888)
+--select dbo.takewiki_k3_md_supplier_func_getNameByItemID(889)
+go
+ --tsda 'takewiki_k3_md_supplier_view'
+ tsda_funcFactory_getNumberByItemID 'takewiki_k3_md_supplier_func_getNumberByItemID',
+ 'takewiki_k3_md_supplier_view',
+'FItemID',
+ 'FNumber'
+ --select dbo.takewiki_k3_md_supplier_func_getNumberByItemID(869)
+ --select dbo.takewiki_k3_md_supplier_func_getNumberByItemID(870)
+ 
+
+ go
+ exec  tsda_funcFactory_getParentIDByLevel 'takewiki_k3_md_supplier_func_getParentIDByLevel',
+'takewiki_k3_md_supplier_view',
+'FItemID',
+'FParentID',
+'FLevel'
+
+--tsda 'takewiki_k3_md_supplier_view'
+--select dbo.takewiki_k3_md_supplier_func_getParentIDByLevel(870,3)
+--select dbo.takewiki_k3_md_supplier_func_getParentIDByLevel(870,2)
+--select dbo.takewiki_k3_md_supplier_func_getParentIDByLevel(870,1)
+
+
+go

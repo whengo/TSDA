@@ -9,4 +9,7 @@ exec takewiki_k3_md_customer_view_rebuild @DBName
 exec takewiki_k3_md_customer_view_onlyDetail_rebuild
 exec takewiki_k3_md_department_view_rebuild @DBName
 exec takewiki_k3_md_department_view_onlyDetail_rebuild
+exec takewiki_k3_md_supplier_view_rebuild @DBName
+exec takewiki_k3_md_supplier_view_onlyDetail_rebuild
+
 

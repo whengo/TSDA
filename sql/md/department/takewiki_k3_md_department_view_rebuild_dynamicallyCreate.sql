@@ -39,7 +39,7 @@ go
 
 ---takewiki_k3_md_department_view_rebuild ''
 ---sp_helptext takewiki_k3_md_deparment_view ''
----tsda  takewiki_k3_md_deparment_view 
+---tsda  takewiki_k3_md_department_view 
 
 
 

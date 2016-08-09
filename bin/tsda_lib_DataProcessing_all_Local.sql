@@ -413,3 +413,61 @@ exec  tsda_funcFactory_getParentIDByLevel 'takewiki_k3_md_customer_func_getParen
 --select dbo.takewiki_k3_md_customer_func_getParentIDByLevel(388,2)
 --select dbo.takewiki_k3_md_customer_func_getParentIDByLevel(388,1)
 go
+
+exec tsda_funcFactory_getCurrentLevel 
+'takewiki_k3_md_department_func_getCurrentLevel',
+'takewiki_k3_md_department_view','FItemID','FLevel'
+---tsda takewiki_k3_md_department_view
+
+--select dbo.takewiki_k3_md_department_func_getCurrentLevel(235)
+--select dbo.takewiki_k3_md_department_func_getCurrentLevel(255)
+go
+exec tsda_funcFactory_getItemIDByLevel 'takewiki_k3_md_department_func_getItemIDByLevel',
+'takewiki_k3_md_department_func_getCurrentLevel',
+'takewiki_k3_md_department_func_getParentIDByLevel'
+
+---  tsda 'takewiki_k3_md_department_view'
+ 
+ --  select dbo.takewiki_k3_md_department_func_getItemIDByLevel(258,2)
+  -- select dbo.takewiki_k3_md_department_func_getItemIDByLevel(258,1)
+go
+--tsda 'takewiki_k3_md_department_view'
+
+exec tsda_funcFactory_getItemIDByName 'takewiki_k3_md_department_func_getItemIDByName',
+ 'takewiki_k3_md_department_view',
+'FItemid',
+'FName'
+--select dbo.takewiki_k3_md_department_func_getItemIDByName('生产部')
+go
+ --tsda 'takewiki_k3_md_department_view'
+ --go
+ tsda_funcFactory_getItemIDByNumber 'takewiki_k3_md_department_func_getItemIDByNumber',
+ 'takewiki_k3_md_department_view',
+'FItemID',
+ 'FNumber'
+ --go
+ --select dbo.takewiki_k3_md_department_func_getItemIDByNumber('002')
+ --select dbo.takewiki_k3_md_department_func_getItemIDByNumber('6.08')
+ 
+ go
+ -- tsda 'takewiki_k3_md_department_view'
+tsda_funcFactory_getNameByItemID 'takewiki_k3_md_department_func_getNameByItemID',
+'takewiki_k3_md_department_view',
+'FItemID',
+'FName'
+--select dbo.takewiki_k3_md_department_func_getNameByItemID(234)
+--select dbo.takewiki_k3_md_department_func_getNameByItemID(243)
+go
+ --tsda 'takewiki_k3_md_department_view'
+ tsda_funcFactory_getNumberByItemID 'takewiki_k3_md_department_func_getNumberByItemID',
+ 'takewiki_k3_md_department_view',
+'FItemID',
+ 'FNumber'
+ --select dbo.takewiki_k3_md_department_func_getNumberByItemID(234)
+ --select dbo.takewiki_k3_md_department_func_getNumberByItemID(243)
+ go
+ exec tsda_funcFactory_getParentIDByLevel 'takewiki_k3_md_department_func_getParentIDByLevel',
+'takewiki_k3_md_department_view','FItemID','FParentID','FLevel'
+-- select dbo.takewiki_k3_md_department_func_getParentIDByLevel(259,1)
+go
+

@@ -27,6 +27,7 @@ exec sp_executesql @sql_run
 end
 go
 
+--usage
 ---takewiki_k3_fi_voucherEntry_view_rebuild ''
 -- takewiki_k3_fi_voucherEntry_view_rebuild 'AIS20160721134104'
 ---tsda  takewiki_k3_fi_voucherEntry_view

@@ -29,5 +29,5 @@ end
 go
 
 ---takewiki_k3_fi_voucher_view_rebuild ''
-takewiki_k3_fi_voucher_view_rebuild 'AIS20160721134104'
+-- takewiki_k3_fi_voucher_view_rebuild 'AIS20160721134104'
 ---tsda  takewiki_k3_fi_voucher_view

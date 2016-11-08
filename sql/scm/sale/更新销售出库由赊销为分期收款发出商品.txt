@@ -1,0 +1,37 @@
+
+
+if OBJECT_ID('takewiki_k3_scm_SaleOutDividedPeriodVoucher') is not null
+    drop proc takewiki_k3_scm_SaleOutDividedPeriodVoucher
+    go
+
+create proc takewiki_k3_scm_SaleOutDividedPeriodVoucher (@Fbillno nvarchar(50))
+as
+begin
+declare @vchid int 
+declare @ms nvarchar(100)
+declare @finterid int
+select @vchid =FVchInterID,@finterid=FInterID from  icstockbill where FBillNo = @Fbillno
+ and FTranType=21
+ if @vchid >0
+   begin
+   update icstockbill set FSaleStyle=102
+    where FInterID=@finterid
+    if exists (select * from ICSaleVoucher where FInterID=@finterid)
+      begin
+      delete from ICSaleVoucher where FInterID=@finterid
+      end 
+   insert into ICSaleVoucher
+select FInterID,FVchInterID,0  from icstockbill  where FBillNo=@Fbillno
+   set @ms ='编号为'+@Fbillno+'销售出库单更新完成！'
+   end
+   else
+        
+   begin
+   set @ms ='编号为'+@Fbillno+'销售出库单不存在或未生成凭证'
+   end
+   
+  select @ms as '更新结果'
+ end
+ go
+ 
+ exec takewiki_k3_scm_SaleOutDividedPeriodVoucher 'XOUT01286134'
